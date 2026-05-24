@@ -23,47 +23,60 @@
             ☰
         </div>
         <ul id="nav-links">
-            <li>HOME</li>
-            <li>ABOUT</li>
-            <li>SKILLS</li>
-            <li>PROJECTS</li>
-            <li>CONTACT</li>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
             <h2>AIML <span>RESEARCHER</span> | FULL STACK <span>DEVELOPER</span></h2>
             <p>Building scalable full-stack products and <span>AI-powered systems</span> that move from research to real-world impact.</p>
-            <button>
-                My Work
-            </button>
+            <div class="hero-actions">
+                <button>
+                    My Work
+                </button>
+                <a class="hero-link" href="https://drive.google.com/file/d/1pcy_v5iHKDzZWoIUbRa7GcD-ZTapr_Nf/view?usp=sharing" target="_blank" rel="noopener">View Resume</a>
+            </div>
         </div>
     </section>
 
     <section class="about" id="about">
+        <div class="about-heading">
+            <h1>About <span>Me</span></h1>
+        </div>
         <div class="about-container">
             <div class="about-left">
                 <h1>
-                    About <span>Me</span>
+                    <span>Engineer</span> by practice, <span>Researcher</span> by curiosity.
                 </h1>
                 <p>I am Maharshi, a full-stack developer and AI researcher focused on reliable products, intelligent systems, and measurable outcomes.</p>
+                <h3 class="education-title">My <span>Education</span></h3>
+                <div class="education-card">
+                    <div class="education-header">
+                        <h2>Aditya University</h2>
+                        <span class="education-badge">2024 - 2027</span>
+                    </div>
+                    <h3>B.Tech in Artificial Intelligence and Machine Learning</h3>
+                    <p>Pursuing an AIML-focused engineering degree with an emphasis on applied machine learning, software development, intelligent systems, and practical problem solving.</p>
+                </div>
             </div>
 
             <div class="about-right">
                 <div class="about-card">
-                    <h1>Education</h1>
-                    <p>B.Tech in Artificial Intelligence and Machine Learning, with a focus on applied ML and product engineering.</p>
+                    <h1>What I bring</h1>
+                    <p>End-to-end engineering across frontend, backend, and data-aware systems.</p>
+                    <p>Applied AI/ML thinking shaped around practical user and product outcomes.</p>
+                    <p>Strong bias toward clear architecture, rapid iteration, and dependable delivery.</p>
                 </div>
 
                 <div class="about-card">
-                    <h1>Interests</h1>
-                    <p>Machine learning, system design, APIs, and human-centered interfaces.</p>
+                    <h1>Currently exploring</h1>
+                    <p>Agentic workflows, LLM evaluation, intelligent automation, and software systems that make advanced tooling more usable in practice.</p>
                 </div>
-                <div class="about-card">
-                <h1>Goal</h1>
-                <p>To build high-impact platforms where data, AI, and software meet in production.</p>
-            </div>
             </div>
 
         </div>
@@ -72,13 +85,10 @@
     <section class="skills" id="skills">
 
     <div class="skills-heading">
-
         <h1>My <span>Skills</span></h1>
-
-            <p>
+        <p>
             Tools, frameworks, and research stacks I use to ship production-grade apps and AI systems.
         </p>
-
     </div>
 
     <div class="skills-container">
@@ -165,8 +175,146 @@
 
     </div>
 
-</section>
+    </section>
 
+    <section class="experience" id="experience">
+    <div class="experience-heading">
+        <h1>My <span>Experience</span></h1>
+        <p>My journey through internships, research, and projects in AI and software development.</p>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>AI Research Intern at <span class="company-name">"Project Genesis AI Labs Pvt. Ltd"</span></h3>
+                <p>May 2026 - June 2026</p>
+                <p>Conducted applied research in NLP and built a question-answering prototype over domain documents.</p>
+                <p>Designed a clean data pipeline, ran baseline experiments, and documented findings for stakeholder review.</p>
+                <p>Tools: Python, PyTorch, Hugging Face, Git.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Gen AI Intern at <span class="company-name">"BrainOVison"</span></h3>
+                <p>May 2025 - June 2025</p>
+                <p>Built prompt templates and evaluation sets for LLM-driven features and summarized results for the team.</p>
+                <p>Collaborated with engineers to integrate a retrieval workflow and improve response relevance.</p>
+                <p>Tools: Python, LangChain, vector search, REST APIs.</p>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="project-heading">
+            <h1>My <span>Projects</span></h1>
+            <p>Work shaped by engineering discipline and research thinking.</p>
+        </div>
+
+        <div class="projects-container">
+            <div class="project-card">
+                <img src="../images/project-bank-management.png" alt="Bank Account Management API">
+                <div class="project-content">
+                    <h3>Bank Account Management API</h3>
+                    <p>A financial systems API built with Event Sourcing and CQRS, featuring immutable event logs, projection rebuilds, snapshotting, idempotent transactions, and time-travel balance queries.</p>
+                    <div class="project-tech">
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>PostgreSQL</span>
+                        <span>CQRS</span>
+                        <span>Event Sourcing</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/maharshi0143/Bank-Account-Management-API" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="../images/project-library-management.png" alt="Library Management API">
+                <div class="project-content">
+                    <h3>Library Management API</h3>
+                    <p>A RESTful backend for library operations with complete CRUD flows, borrowing and return tracking, automated overdue fine calculation, and state-machine-driven book lifecycle management.</p>
+                    <div class="project-tech">
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>PostgreSQL</span>
+                        <span>REST API</span>
+                        <span>Business Rules</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/maharshi0143/Library-Management-API" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="../images/project-local-llm.jpeg" alt="Local LLM Chatbot">
+                <div class="project-content">
+                    <h3>Local LLM Chatbot</h3>
+                    <p>An offline customer support chatbot workflow using Ollama and Llama 3.2 (3B), designed to compare zero-shot and one-shot prompting while logging responses for structured evaluation.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Ollama</span>
+                        <span>Llama 3.2</span>
+                        <span>Prompt Engineering</span>
+                        <span>Evaluation</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/maharshi0143/local-llm-chatbot" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+    <div class="contact-heading">
+        <h1>Contact <span>Me</span></h1>
+        <p>
+            Let's connect and build something amazing together.
+        </p>
+    </div>
+    <div class="contact-container">
+        <!-- LEFT -->
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>
+                Feel free to reach out for collaborations, projects, or just a friendly conversation.
+            </p>
+            <div class="contact-details">
+                <p>📧 maharshi.dv.kld@gmail.com</p>
+                <p>📍 Andhra Pradesh, India</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/maharshi0143" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/denuvakonda-maharshi-4a6195292/" target="_blank">LinkedIn</a>
+                <a href="https://leetcode.com/u/Maharshi_dv/" target="_blank">LeetCode</a>
+            </div>
+            <div class="social-links">
+                <a href="https://drive.google.com/file/d/1pcy_v5iHKDzZWoIUbRa7GcD-ZTapr_Nf/view?usp=sharing" target="_blank" rel="noopener">View Resume</a>
+                <a href="https://drive.google.com/uc?export=download&id=1pcy_v5iHKDzZWoIUbRa7GcD-ZTapr_Nf" target="_blank" rel="noopener" download>Download Resume</a>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">
+                Send Message
+            </button>
+        </form>
+    </div>
+
+</section>
     <script src="./script.js"></script>
 </body>
 </html>
