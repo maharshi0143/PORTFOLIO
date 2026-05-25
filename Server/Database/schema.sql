@@ -1,0 +1,54 @@
+CREATE TABLE IF NOT EXISTS admins (
+
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS projects (
+
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    techstack TEXT[],
+    github_link TEXT,
+    live_link TEXT,
+    image_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS skills (
+
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    icon TEXT
+);
+
+CREATE TABLE IF NOT EXISTS experiences (
+
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    duration VARCHAR(255),
+    description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS resumes (
+
+    id SERIAL PRIMARY KEY,
+    resume_url TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
