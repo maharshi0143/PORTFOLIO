@@ -99,6 +99,8 @@ nav a:hover{
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 60px;
     padding: 0 80px;
     position: relative;
     z-index: 10;
@@ -107,6 +109,7 @@ nav a:hover{
 
 .hero-content{
     max-width: 600px;
+    flex: 1;
 }
 
 .hero-content h2{
@@ -177,6 +180,86 @@ nav a:hover{
 .hero-link:hover{
     background: #ff3e00;
     color: white;
+}
+
+.hero-right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: auto;
+}
+
+.current-role{
+    max-width: 520px;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.current-role-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.current-role-header h3{
+    font-size: 22px;
+    color: #1f2937;
+}
+
+.current-badge{
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #1f2937;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.current-org{
+    font-size: 16px;
+    color: #ff3e00;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.current-summary{
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.current-list{
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+.current-list li{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: #1f2937;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.current-list li::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-top: 6px;
+    border-radius: 999px;
+    background: #ff3e00;
+    box-shadow: 0 0 10px rgba(255,62,0,0.35);
 }
 
 .hero-content button:hover span{
@@ -714,7 +797,7 @@ nav a:hover{
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder{
-    color: white;
+    color: rgb(255, 255, 255);
     opacity: 1;
 }
 
@@ -952,6 +1035,8 @@ nav a:hover{
     .hero{
         justify-content: center;
         text-align: center;
+        flex-direction: column;
+        gap: 30px;
     }
 
     .hero-content{
@@ -959,6 +1044,16 @@ nav a:hover{
         flex-direction: column;
         align-items: center;
         margin-top: 250px;
+    }
+
+    .hero-right{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .current-role{
+        max-width: 520px;
+        text-align: center;
     }
 
     .hero-content h2{
@@ -1207,6 +1302,18 @@ nav a:hover{
     .hero-content button{
         padding: 14px;
         font-size: 14px;
+    }
+
+    .current-role{
+        padding: 22px;
+    }
+
+    .current-role h3{
+        font-size: 20px;
+    }
+
+    .current-role p{
+        font-size: 16px;
     }
 
     /* ABOUT */
