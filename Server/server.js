@@ -5,6 +5,9 @@ require('dotenv').config();
 
 const pool = require('./Database/db');
 const projectRoutes = require("./routes/projectRoutes");
+const skillRoutes = require("./routes/skillRoutes");
+const experienceRoutes = require("./routes/experienceRoutes");
+const resumeRoutes = require("./routes/resumeRoutes");
 
 const app = express();
 
@@ -12,6 +15,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/projects", projectRoutes);
+app.use("/api/skills", skillRoutes); 
+app.use("/api/experiences", experienceRoutes);
+app.use("/api/resume", resumeRoutes);
 
 // Test Routes
 app.get("/",(req,res)=>{
