@@ -1,20 +1,36 @@
 const pool = require("../Database/db");
-const bycrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const ALLOWED_ADMIN_EMAIL = "admin@gmail.com";
+
+const isStrongPassword = (value) => {
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/.test(value);
+};
 
 // Register Admin.
 
 const registerAdmin = async(req,res)=>{
     try{
+        return res.status(403).json({
+            error: "Admin registration is disabled"
+        });
+
         const{
             email,
-            password_hash
+            password
         } = req.body;
 
         // Validation
-        if(!email || !password_hash){
+        if(!email || !password){
             return res.status(400).json({
                 error: "Email and password are required"
+            });
+        }
+
+        if(!isStrongPassword(password)){
+            return res.status(400).json({
+                error: "Password must be at least 8 characters and include upper, lower, number, and symbol"
             });
         }
 
@@ -31,9 +47,9 @@ const registerAdmin = async(req,res)=>{
         }
 
         // Hash Password
-        const salt = await bycrypt.genSalt(10);
-        const hashedPassword = await bycrypt.hash(
-            password_hash,
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(
+            password,
             salt
         );
 
@@ -63,11 +79,17 @@ const loginAdmin = async(req,res)=>{
     try{
         const{
             email,
-            password_hash
+            password
         } = req.body;
 
+        if(email !== ALLOWED_ADMIN_EMAIL){
+            return res.status(403).json({
+                error: "Unauthorized admin"
+            });
+        }
+
         // Validation
-        if(!email || !password_hash){
+        if(!email || !password){
             return res.status(400).json({
                 error: "Email and password are required"
             });
@@ -87,8 +109,8 @@ const loginAdmin = async(req,res)=>{
         const admin = result.rows[0];
 
         // Compare Password
-        const isMatch = await bycrypt.compare(
-            password_hash,
+        const isMatch = await bcrypt.compare(
+            password,
             admin.password_hash
         );
 

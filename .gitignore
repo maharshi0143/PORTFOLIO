@@ -18,5 +18,11 @@ yarn-error.log*
 /dist
 /build
 
+# Runtime uploads
+/uploads
+
+# Coverage
+/coverage
+
 # Misc
 .vscode/

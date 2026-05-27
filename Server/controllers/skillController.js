@@ -76,6 +76,7 @@ const updateSkill = async (req, res) => {
             icon
 
         } = req.body;
+
         const result = await pool.query(
 
             `

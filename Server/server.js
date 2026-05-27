@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 
 require('dotenv').config();
 
@@ -16,12 +17,27 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+const authLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 30,
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
+const contactLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 15,
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
 app.use("/api/projects", projectRoutes);
 app.use("/api/skills", skillRoutes); 
 app.use("/api/experiences", experienceRoutes);
 app.use("/api/resume", resumeRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/contact", contactRoutes);
+app.use("/api/auth", authLimiter, authRoutes);
+app.use("/api/contact", contactLimiter, contactRoutes);
 
 // Test Routes
 app.get("/",(req,res)=>{

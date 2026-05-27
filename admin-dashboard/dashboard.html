@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="./dashboard.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>
+                Maharshi <span>Admin</span>
+            </h2>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li
+            class="nav-item active"
+            data-section="dashboardSection">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Dashboard</span>
+
+            </li>
+
+            <li
+            class="nav-item"
+            data-section="projectsSection">
+
+                <i class="fa-solid fa-code"></i>
+
+                <span>Projects</span>
+
+            </li>
+
+            <li
+            class="nav-item"
+            data-section="skillsSection">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <span>Skills</span>
+
+            </li>
+
+            <li
+            class="nav-item"
+            data-section="experienceSection">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>Experience</span>
+
+            </li>
+
+            <li
+            class="nav-item"
+            data-section="resumeSection">
+
+                <i class="fa-solid fa-file"></i>
+
+                <span>Resume</span>
+
+            </li>
+
+            <li
+            class="nav-item"
+            data-section="messagesSection">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <span>Messages</span>
+
+            </li>
+
+        </ul>
+
+        <button id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- DASHBOARD SECTION -->
+
+        <section
+        id="dashboardSection"
+        class="dashboard-section active-section">
+
+            <div class="topbar">
+
+                <h1>
+                    Dashboard Overview 🚀
+                </h1>
+
+            </div>
+
+            <div class="cards-container">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <div class="card-info">
+
+                        <h3 id="projectCount">0</h3>
+
+                        <p>Projects</p>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+
+                    <div class="card-info">
+
+                        <h3 id="skillCount">0</h3>
+
+                        <p>Skills</p>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <div class="card-info">
+
+                        <h3 id="experienceCount">0</h3>
+
+                        <p>Experience</p>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <div class="card-info">
+
+                        <h3 id="messageCount">0</h3>
+
+                        <p>Messages</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h2>Recent Messages</h2>
+
+                    <span id="dashboardMessageCount">0</span>
+
+                </div>
+
+                <div
+                class="dashboard-messages"
+                id="dashboardMessages">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PROJECTS SECTION -->
+
+        <section
+        id="projectsSection"
+        class="dashboard-section">
+
+            <div class="section-topbar">
+
+                <div>
+
+                    <h2>
+                        Projects Management
+                    </h2>
+
+                    <p>
+                        Manage all your projects dynamically
+                    </p>
+
+                </div>
+
+                <button id="openProjectModal">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Project
+
+                </button>
+
+            </div>
+
+            <div
+            class="projects-grid"
+            id="projectsContainer">
+
+            </div>
+
+        </section>
+
+        <!-- SKILLS SECTION -->
+
+        <!-- SKILLS SECTION -->
+
+<section
+id="skillsSection"
+class="dashboard-section">
+
+    <!-- TOPBAR -->
+
+    <div class="section-topbar">
+
+        <div>
+
+            <h2>
+
+                Skills Management
+
+            </h2>
+
+            <p>
+
+                Manage all your technical skills
+
+            </p>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button id="openSkillModal">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Skill
+
+        </button>
+
+    </div>
+
+    <!-- SKILLS GRID -->
+
+    <div
+    class="skills-grid"
+    id="skillsContainer">
+
+    </div>
+
+</section>
+
+<!-- SKILL MODAL -->
+
+<div
+class="modal-overlay"
+id="skillModal">
+
+    <div class="modal-card">
+
+        <!-- CLOSE -->
+
+        <button
+        class="close-modal"
+        id="closeSkillModal">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <h2 id="skillModalTitle">
+
+                Add Skill
+
+            </h2>
+
+        </div>
+
+        <!-- FORM -->
+
+        <form id="skillForm">
+
+            <input
+            type="text"
+            id="skillName"
+            placeholder="Skill Name"
+            required>
+
+            <input
+            type="text"
+            id="skillIcon"
+            placeholder="Skill Icon Class"
+            required>
+
+            <input
+            type="hidden"
+            id="skillId">
+
+            <button type="submit">
+
+                Save Skill
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+        <!-- EXPERIENCE SECTION -->
+
+        <section
+        id="experienceSection"
+        class="dashboard-section">
+
+            <div class="section-topbar">
+
+                <div>
+
+                    <h2>
+                        Experience Management
+                    </h2>
+
+                    <p>
+                        Manage your experience entries
+                    </p>
+
+                </div>
+
+                <button id="openExperienceModal">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Experience
+
+                </button>
+
+            </div>
+
+            <div
+            class="experience-grid"
+            id="experienceContainer">
+
+            </div>
+
+        </section>
+
+        <!-- RESUME SECTION -->
+
+        <section
+        id="resumeSection"
+        class="dashboard-section">
+
+            <div class="section-topbar">
+
+                <div>
+
+                    <h2>
+                        Resume Management
+                    </h2>
+
+                    <p>
+                        Update your resume link
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="resume-card">
+
+                <p>
+                    Current resume:
+                    <a id="resumePreview" href="#" target="_blank" rel="noopener">View</a>
+                </p>
+
+                <form id="resumeForm">
+
+                    <input
+                    type="text"
+                    id="resumeUrl"
+                    placeholder="Resume URL"
+                    required>
+
+                    <button type="submit">
+                        Save Resume
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- MESSAGES SECTION -->
+
+        <section
+        id="messagesSection"
+        class="dashboard-section">
+
+            <div class="section-topbar">
+
+                <div>
+
+                    <h2>
+                        Messages Management
+                    </h2>
+
+                    <p>
+                        Review and manage contact messages
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+            class="messages-grid"
+            id="messagesContainer">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- PROJECT MODAL -->
+
+    <div
+    class="modal-overlay"
+    id="projectModal">
+
+        <div class="modal-card">
+
+            <button
+            class="close-modal"
+            id="closeProjectModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">
+                    Add Project
+                </h2>
+
+            </div>
+
+            <form id="projectForm">
+
+                <input
+                type="text"
+                id="title"
+                placeholder="Project Title"
+                required>
+
+                <textarea
+                id="description"
+                placeholder="Project Description"
+                required></textarea>
+
+                <input
+                type="text"
+                id="tech"
+                placeholder="Tech Stack (comma separated)"
+                required>
+
+                <input
+                type="text"
+                id="github"
+                placeholder="GitHub Link">
+
+                <input
+                type="text"
+                id="live"
+                placeholder="Live Link">
+
+                <input
+                type="text"
+                id="image"
+                placeholder="Image URL">
+
+                <input
+                type="hidden"
+                id="projectId">
+
+                <button type="submit">
+                    Save Project
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- EXPERIENCE MODAL -->
+
+    <div
+    class="modal-overlay"
+    id="experienceModal">
+
+        <div class="modal-card">
+
+            <button
+            class="close-modal"
+            id="closeExperienceModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <div class="modal-header">
+
+                <h2 id="experienceModalTitle">
+                    Add Experience
+                </h2>
+
+            </div>
+
+            <form id="experienceForm">
+
+                <input
+                type="text"
+                id="experienceTitle"
+                placeholder="Title"
+                required>
+
+                <input
+                type="text"
+                id="experienceDuration"
+                placeholder="Duration"
+                required>
+
+                <textarea
+                id="experienceDescription"
+                placeholder="Description"
+                required></textarea>
+
+                <input
+                type="hidden"
+                id="experienceId">
+
+                <button type="submit">
+                    Save Experience
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./dashboard.js"></script>
+
+</body>
+</html>

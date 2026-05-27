@@ -26,6 +26,7 @@
             <li><a href="#home">HOME</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
             <li><a href="#projects">PROJECTS</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
@@ -228,6 +229,8 @@
         </div>
     </div>
 
+    <div class="timeline" id="experienceTimeline"></div>
+
     </section>
 
     <section class="projects" id="projects">
@@ -323,17 +326,19 @@
         </div>
 
         <!-- RIGHT -->
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
+        <form class="contact-form" id="contactForm">
+            <input type="text" name="name" placeholder="Your Name">
+            <input type="email" name="email" placeholder="Your Email">
+            <textarea name="message" placeholder="Your Message"></textarea>
             <button type="submit">
                 Send Message
             </button>
+            <p class="contact-status" id="contactStatus"></p>
         </form>
     </div>
 
 </section>
+    <script src="./config.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
