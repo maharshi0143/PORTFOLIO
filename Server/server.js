@@ -8,6 +8,8 @@ const projectRoutes = require("./routes/projectRoutes");
 const skillRoutes = require("./routes/skillRoutes");
 const experienceRoutes = require("./routes/experienceRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
+const authRoutes = require("./routes/authRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/skills", skillRoutes); 
 app.use("/api/experiences", experienceRoutes);
 app.use("/api/resume", resumeRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/contact", contactRoutes);
 
 // Test Routes
 app.get("/",(req,res)=>{

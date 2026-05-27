@@ -8,13 +8,15 @@ const {
     deleteExperiences
 } = require('../controllers/experienceController');
 
+const { verifyToken } = require("../middleware/authMiddleware");
+
 // Get experiences
 router.get("/", getExperiences);
 // Create experience
-router.post("/", createExperiences);
+router.post("/", verifyToken, createExperiences);
 // Update experience
-router.put("/:id", updateExperiences);
+router.put("/:id", verifyToken, updateExperiences);
 // Delete experience
-router.delete("/:id", deleteExperiences);
+router.delete("/:id", verifyToken, deleteExperiences);
 
 module.exports = router;

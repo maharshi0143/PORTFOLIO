@@ -8,13 +8,15 @@ const {
     deleteSkill
 } = require('../controllers/skillController');
 
+const { verifyToken } = require("../middleware/authMiddleware");
+
 // Get skills
 router.get("/", getSkills);
 // Create skill
-router.post("/", createSkill);
+router.post("/", verifyToken, createSkill);
 // Update skill
-router.put("/:id", updateSkill);
+router.put("/:id", verifyToken, updateSkill);
 // Delete skill
-router.delete("/:id", deleteSkill);
+router.delete("/:id", verifyToken, deleteSkill);
 
 module.exports = router;

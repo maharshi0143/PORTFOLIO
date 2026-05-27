@@ -10,13 +10,15 @@ const {
 
  } = require('../controllers/projectController');
 
+const { verifyToken } = require("../middleware/authMiddleware");
+
 // Get projects
 router.get("/", getProjects);
 // Create project
-router.post("/", createProject);
+router.post("/",verifyToken, createProject);
 // Update project
-router.put("/:id", updateProject);
+router.put("/:id", verifyToken, updateProject);
 // Delete project
-router.delete("/:id", deleteProject);
+router.delete("/:id", verifyToken, deleteProject);
 
 module.exports = router;

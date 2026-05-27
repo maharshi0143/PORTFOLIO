@@ -6,9 +6,11 @@ const {
     updateResume
 } = require('../controllers/resumeController');
 
+const { verifyToken } = require("../middleware/authMiddleware");
+
 // Get resume
 router.get("/", getResume);
 // Update resume
-router.put("/", updateResume);
+router.put("/", verifyToken, updateResume);
 
 module.exports = router;
