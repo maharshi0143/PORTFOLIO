@@ -17,6 +17,10 @@ body{
     color: white;
 }
 
+.menu-toggle{
+    display: none;
+}
+
 /* SIDEBAR */
 
 .sidebar{
@@ -918,14 +922,47 @@ body{
 }
 
 @media(max-width: 768px){
-
     body{
         flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .menu-toggle{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.06);
+        color: white;
+        cursor: pointer;
     }
 
     .sidebar{
         width: 100%;
         min-height: auto;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .nav-links{
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-item{
+        flex: 1 1 140px;
+    }
+
+    .main-content{
+        padding: 24px 20px 40px;
+    }
+
+    .topbar h1{
+        font-size: 30px;
     }
 
     .section-topbar{
@@ -933,4 +970,43 @@ body{
         align-items: flex-start;
     }
 
+    .dashboard-messages,
+    .projects-grid,
+    .skills-grid,
+    .experience-grid,
+    .messages-grid{
+        justify-items: stretch;
+    }
+
+    .project-card,
+    .skill-card,
+    .experience-card,
+    .message-card{
+        max-width: none;
+    }
+
+    .modal-card{
+        padding: 28px 22px;
+    }
+}
+
+@media(max-width: 560px){
+    .cards-container{
+        grid-template-columns: 1fr;
+    }
+
+    .card{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-topbar button{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .project-actions,
+    .skill-actions{
+        flex-direction: column;
+    }
 }

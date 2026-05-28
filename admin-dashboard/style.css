@@ -177,3 +177,33 @@ button:hover{
     }
 
 }
+
+@media(max-width: 768px){
+    body{
+        overflow: auto;
+        padding: 20px 0;
+    }
+
+    .background-glow{
+        width: 360px;
+        height: 360px;
+        filter: blur(120px);
+    }
+
+    .login-card{
+        padding: 32px 24px;
+        border-radius: 20px;
+    }
+
+    .login-header h2{
+        font-size: 32px;
+    }
+
+    .login-header p{
+        font-size: 14px;
+    }
+
+    .input-group input{
+        font-size: 15px;
+    }
+}
