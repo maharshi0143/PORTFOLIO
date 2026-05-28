@@ -3,7 +3,7 @@
 Full-stack portfolio with a public site, an admin dashboard, and a Node/Express API backed by PostgreSQL.
 
 ### Live Links
-- Public site:
+- Public site: https://portfolio-omega-rosy-52.vercel.app/
 
 
 ### Project Structure
