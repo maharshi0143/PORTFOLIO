@@ -1,4 +1,4 @@
-const pool = require("../database/db");
+const pool = require("../Database/db");
 
 const nodemailer = require("nodemailer");
 
@@ -61,32 +61,6 @@ const sendMessage = async (req, res) => {
 
         }
 
-        /* INSERT MESSAGE */
-
-        const result = await pool.query(
-
-            `
-            INSERT INTO contact_messages (
-
-                name,
-                email,
-                message
-
-            )
-
-            VALUES ($1, $2, $3)
-
-            RETURNING *
-            `,
-
-            [
-                trimmedName,
-                trimmedEmail,
-                trimmedMessage
-            ]
-
-        );
-
         /* SEND EMAIL */
 
         await transporter.sendMail({
@@ -127,6 +101,32 @@ const sendMessage = async (req, res) => {
             `
 
         });
+
+        /* INSERT MESSAGE */
+
+        const result = await pool.query(
+
+            `
+            INSERT INTO contact_messages (
+
+                name,
+                email,
+                message
+
+            )
+
+            VALUES ($1, $2, $3)
+
+            RETURNING *
+            `,
+
+            [
+                trimmedName,
+                trimmedEmail,
+                trimmedMessage
+            ]
+
+        );
 
         /* RESPONSE */
 
