@@ -4,10 +4,20 @@ const API_BASE_URL = typeof BASE_URL === "string"
 
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
+const myWorkBtn = document.getElementById("myWorkBtn");
 
 if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
         navLinks.classList.toggle("active");
+    });
+}
+
+if (myWorkBtn) {
+    myWorkBtn.addEventListener("click", () => {
+        const projectsSection = document.getElementById("projects");
+        if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: "smooth" });
+        }
     });
 }
 
