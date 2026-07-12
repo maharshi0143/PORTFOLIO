@@ -3,7 +3,7 @@
 Full-stack portfolio with a public site, an admin dashboard, and a Node/Express API backed by PostgreSQL.
 
 ### Live Links
-- Public site: https://portfolio-omega-rosy-52.vercel.app/
+- Public site: https://portfolio-sepia-iota-29.vercel.app/
 
 ### Project Structure
 - `Client/` — Public portfolio (React SPA)
