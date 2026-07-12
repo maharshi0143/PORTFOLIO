@@ -80,7 +80,11 @@ function ScrollIndicator() {
 
 export default function Hero() {
   const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    if (window.lenis) {
+      window.lenis.scrollTo("#projects");
+    } else {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (

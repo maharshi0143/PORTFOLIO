@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maharshi Denuvakonda — Full Stack Developer & AI Researcher</title>
     <meta name="description" content="Portfolio of Maharshi Denuvakonda — Full Stack Developer and AI Researcher building production-grade software with exceptional attention to detail." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Maharshi Denuvakonda — Full Stack Developer & AI Researcher" />
+    <meta property="og:description" content="Full-stack developer and AI researcher building systems that are intelligent, reliable, and worth shipping." />
+    <meta property="og:url" content="https://portfolio-omega-rosy-52.vercel.app/" />
+    <meta property="og:image" content="https://portfolio-omega-rosy-52.vercel.app/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Maharshi Denuvakonda — Full Stack Developer & AI Researcher" />
+    <meta name="twitter:description" content="Full-stack developer and AI researcher building systems that are intelligent, reliable, and worth shipping." />
+    <meta name="twitter:image" content="https://portfolio-omega-rosy-52.vercel.app/og-image.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Maharshi Denuvakonda",
+      "url": "https://portfolio-omega-rosy-52.vercel.app/",
+      "jobTitle": "Full Stack Developer & AI Researcher",
+      "sameAs": [
+        "https://github.com/maharshi0143",
+        "https://www.linkedin.com/in/denuvakonda-maharshi-4a6195292/"
+      ],
+      "email": "maharshi.dv.kld@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Andhra Pradesh",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +47,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#030305;">
+        <div style="width:40px;height:40px;border:3px solid rgba(0,201,224,0.15);border-top-color:#00c9e0;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+      </div>
+      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
