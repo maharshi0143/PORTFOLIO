@@ -1,62 +1,127 @@
 import { useEffect, useState } from "react";
-import SectionHeading from "../ui/SectionHeading";
-import SkillCard from "../ui/SkillCard";
-import FadeContent from "../../reactbits/FadeContent";
-import { getSkills } from "../../api/api";
+import { motion } from "framer-motion";
+import { getSkills } from "../../lib/api";
+import { fallbackSkills } from "../../data/fallbacks";
+import { SectionHeading } from "../ui";
+import LogoLoop from "../ui/LogoLoop";
 
-const hardcodedSkills = [
-  { id: 1, name: "HTML", icon: "html5-plain colored" },
-  { id: 2, name: "CSS", icon: "css3-plain colored" },
-  { id: 3, name: "JavaScript", icon: "javascript-plain colored" },
-  { id: 4, name: "React.js", icon: "react-original colored" },
-  { id: 5, name: "Node.js", icon: "nodejs-plain colored" },
-  { id: 6, name: "Express.js", icon: "express-original" },
-  { id: 7, name: "PostgreSQL", icon: "postgresql-plain colored" },
-  { id: 8, name: "MongoDB", icon: "mongodb-plain colored" },
-  { id: 9, name: "Machine Learning", icon: "python-plain colored" },
-  { id: 10, name: "Deep Learning", icon: "tensorflow-original colored" },
-  { id: 11, name: "PyTorch", icon: "pytorch-original" },
-  { id: 12, name: "Git & GitHub", icon: "git-plain colored" },
-  { id: 13, name: "Docker", icon: "docker-plain colored" },
-  { id: 14, name: "LLMs", icon: "python-plain colored" },
-  { id: 15, name: "Java", icon: "java-plain colored" },
-  { id: 16, name: "Python3", icon: "python-plain colored" },
-];
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMongodb,
+  SiPython,
+  SiTensorflow,
+  SiPytorch,
+  SiGit,
+  SiDocker,
+  SiOpenaigym,
+  SiSwagger,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
-const Skills = () => {
-  const [skills, setSkills] = useState(hardcodedSkills);
+const iconMap = {
+  HTML: { icon: SiHtml5, color: "#e34f26" },
+  CSS: { icon: SiCss, color: "#1572b6" },
+  JavaScript: { icon: SiJavascript, color: "#f7df1e" },
+  "React.js": { icon: SiReact, color: "#61dafb" },
+  "Node.js": { icon: SiNodedotjs, color: "#339933" },
+  "Express.js": { icon: SiExpress, color: "#ffffff" },
+  PostgreSQL: { icon: SiPostgresql, color: "#4169e1" },
+  MongoDB: { icon: SiMongodb, color: "#47a248" },
+  Python: { icon: SiPython, color: "#3776ab" },
+  TensorFlow: { icon: SiTensorflow, color: "#ff6f00" },
+  PyTorch: { icon: SiPytorch, color: "#ee4c2c" },
+  Git: { icon: SiGit, color: "#f05032" },
+  Docker: { icon: SiDocker, color: "#2496ed" },
+  Java: { icon: FaJava, color: "#ed8b00" },
+  LLMs: { icon: SiOpenaigym, color: "#10a37f" },
+  "REST APIs": { icon: SiSwagger, color: "#85ea2d" },
+};
+
+const ease = [0.16, 1, 0.3, 1];
+
+export default function Skills() {
+  const [skills, setSkills] = useState([]);
 
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await getSkills();
-        if (response.data && response.data.length > 0) {
-          setSkills(response.data);
+        const res = await getSkills();
+        if (res.data && res.data.length > 0) {
+          setSkills(res.data);
+        } else {
+          setSkills(fallbackSkills);
         }
-      } catch (error) {
-        console.log("Using hardcoded skills");
+      } catch {
+        setSkills(fallbackSkills);
       }
     };
     fetchSkills();
   }, []);
 
-  return (
-    <section className="relative z-10 w-full min-h-screen py-24 px-8 md:px-20 pointer-events-auto" id="skills">
-      <SectionHeading
-        title="My"
-        highlight="Skills"
-        subtitle="Tools, frameworks, and research stacks I use to ship production-grade apps and AI systems."
-      />
+  const mappedLogos = skills
+    .filter((s) => iconMap[s.name])
+    .map((s) => ({
+      icon: iconMap[s.name].icon,
+      label: s.name,
+    }));
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-7">
-        {skills.map((skill, i) => (
-          <FadeContent key={skill.id || i} delay={i * 0.05}>
-            <SkillCard skill={skill} />
-          </FadeContent>
-        ))}
+  const half = Math.ceil(mappedLogos.length / 2);
+  const row1 = mappedLogos.slice(0, half);
+  const row2 = mappedLogos.slice(half);
+
+  return (
+    <section
+      id="skills"
+      className="py-20 md:py-28 lg:py-36 px-6 md:px-12 lg:px-24"
+    >
+      <div className="max-w-[1200px] mx-auto text-center">
+        <SectionHeading
+          label="What I Work With"
+          title="Toolbox"
+          subtitle="Tools of the trade — from frameworks to frameworks-of-thought."
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="space-y-8"
+        >
+          {row1.length > 0 && (
+            <LogoLoop
+              logos={row1}
+              speed={40}
+              direction="left"
+              logoHeight={56}
+              gap={60}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#080818"
+            />
+          )}
+          {row2.length > 0 && (
+            <LogoLoop
+              logos={row2}
+              speed={40}
+              direction="right"
+              logoHeight={56}
+              gap={60}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#080818"
+            />
+          )}
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}

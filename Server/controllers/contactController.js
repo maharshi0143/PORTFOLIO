@@ -61,9 +61,45 @@ const sendMessage = async (req, res) => {
 
         }
 
-        /* SEND EMAIL */
+        /* INSERT MESSAGE FIRST */
 
-        await transporter.sendMail({
+        const result = await pool.query(
+
+            `
+            INSERT INTO contact_messages (
+
+                name,
+                email,
+                message
+
+            )
+
+            VALUES ($1, $2, $3)
+
+            RETURNING *
+            `,
+
+            [
+                trimmedName,
+                trimmedEmail,
+                trimmedMessage
+            ]
+
+        );
+
+        /* RESPONSE — message saved, return immediately */
+
+        res.status(201).json({
+
+            message: "Message sent successfully",
+
+            contact: result.rows[0]
+
+        });
+
+        /* SEND EMAIL IN BACKGROUND (non-blocking) */
+
+        transporter.sendMail({
 
             from: process.env.EMAIL_USER,
 
@@ -100,41 +136,9 @@ const sendMessage = async (req, res) => {
 
             `
 
-        });
+        }).catch((emailErr) => {
 
-        /* INSERT MESSAGE */
-
-        const result = await pool.query(
-
-            `
-            INSERT INTO contact_messages (
-
-                name,
-                email,
-                message
-
-            )
-
-            VALUES ($1, $2, $3)
-
-            RETURNING *
-            `,
-
-            [
-                trimmedName,
-                trimmedEmail,
-                trimmedMessage
-            ]
-
-        );
-
-        /* RESPONSE */
-
-        res.status(201).json({
-
-            message: "Message sent successfully",
-
-            contact: result.rows[0]
+            console.log("Email notification failed:", emailErr.message);
 
         });
 
