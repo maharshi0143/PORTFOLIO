@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff3e00;
+  --color-primary-dark: #cc3200;
+  --color-primary-light: #ff6a33;
+  --color-accent: #ff7b00;
+  --color-dark: #0a0a0a;
+  --color-dark-card: rgba(255, 255, 255, 0.06);
+  --color-dark-border: rgba(255, 255, 255, 0.1);
+  --font-heading: "League Spartan", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-dark);
+  font-family: var(--font-body);
+  color: #e5e7eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
